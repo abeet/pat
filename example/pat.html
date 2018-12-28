@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../build/latest/pat.js"></script>
+</head>
+<body>
+    <div id="test">
+    </div>
+	<p>　　dddd</p>
+    <script type="javascript/template" id="J_tmpl">
+		<p>　　d d　d　d　</p>
+        <p>{{{html}}}</p>
+
+    </script>
+</body>
+<script>
+var p = new Pat({
+    el:'test',
+    data:{
+        id:'test2',
+        name:'pat',
+       html:'　　测　试　　'
+    },
+		filters: {
+        deleteHtml: function (html) {
+            var div = document.createElement("div")
+            div.innerHTML = html
+            text = div.textContent
+            div.innerHTML = ''
+            return text
+        }
+    },
+    template:document.getElementById('J_tmpl').innerHTML
+  })
+</script>
+</html>

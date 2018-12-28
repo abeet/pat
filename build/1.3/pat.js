@@ -52,7 +52,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var config = __webpack_require__(1)
 	var Compile = __webpack_require__(2)
@@ -360,9 +360,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = View
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * 指令的前缀
@@ -421,9 +421,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.dataCheckType = 'defineProperties'
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Directive = __webpack_require__(8)
@@ -435,6 +435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var parseExpression = parser.parseExpression
 	var config = __webpack_require__(1)
 
+	var tempDiv = document.createElement("div")
 
 	/**
 	 * 绑定directive，初始化指令
@@ -465,6 +466,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dirInstance.initialize && dirInstance.initialize()
 	  //第一次取值，会通过get set绑定好数据依赖
 	  value = watcher.getValue()
+	  if(describe.directive === 'html'){
+	    // 对不规则的html（例如没有成对的标签）进行修正，增强兼容性
+	    tempDiv.innerHTML = value
+	    value = tempDiv.innerHTML
+	    tempDiv.innerHTML = ''
+	  }
 	  //赋值
 	  watcher.last = value
 	  //调用bind
@@ -582,9 +589,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 工具类
@@ -608,9 +615,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 
@@ -982,9 +989,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	function _mix(s, p) {
@@ -1261,9 +1268,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var config = __webpack_require__(1)
 	var _ = __webpack_require__(5)
@@ -1305,9 +1312,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	}
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var Class = (function() {
 
@@ -1361,9 +1368,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = Class
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 
@@ -1467,9 +1474,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var config = __webpack_require__(1)
 	var _ = __webpack_require__(3)
@@ -1729,9 +1736,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.TextTemplateParserTypes = TextTemplateParserTypes
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Cache = __webpack_require__(11)
@@ -1896,9 +1903,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// 从magix搬过来的cache模块
 
@@ -2026,9 +2033,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = G_Cache
 
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Cache = __webpack_require__(11)
@@ -2131,9 +2138,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * bind用来处理属性，不用来处理textnode
@@ -2172,9 +2179,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 
@@ -2212,9 +2219,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 
@@ -2456,9 +2463,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	var _ = __webpack_require__(3)
@@ -2538,9 +2545,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	
 	var _ = __webpack_require__(3)
@@ -2560,9 +2567,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	})
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var parser = __webpack_require__(9)
@@ -2962,9 +2969,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Watcher = __webpack_require__(20)
 	var _ = __webpack_require__(3)
@@ -3252,9 +3259,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Queue = __webpack_require__(21)
@@ -3387,9 +3394,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Watcher
 
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 
@@ -3444,9 +3451,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.flushUpdate = flushUpdate
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Watcher = __webpack_require__(20)
@@ -3498,9 +3505,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = Observer
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 这是非常特殊的一个directive，用来处理文本节点的插值
@@ -3531,9 +3538,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 这是非常特殊的一个directive，用来处理文本节点的插值
@@ -3568,9 +3575,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Class = _.Class
@@ -4347,9 +4354,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	}
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 用来分析模板字符串，解析成virtual dom
@@ -4376,7 +4383,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//http://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx/
 	ATTRIBUTE_REG = /(?:[\w-:]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s]*))?/g
-	HTML_TAG_REG = /<\/?(\w+)((?:\s+(?:[\w-:]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s]*))?)+\s*|\s*)\/?\>/g
+	HTML_TAG_REG = /<\/?(\w+)((?:\s+(?:[^\s=]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s]*))?)+\s*|\s*)\/?\>/g
 
 	HTML_COMMENT_REG = /<!--(.|\s)*?-->/g
 
@@ -4406,7 +4413,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    })
 	    structure.end++
 
-	    if (/<\/\w+/.test(match)) {
+	    if (/^<\/\w+/.test(match)) {
 	      structure[structure.end].isEnd = true
 	    } else if (attrString !== '') {
 	      structure[structure.end].attrs = analyzeAttributes(attrString)
@@ -4663,9 +4670,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 	var Data = __webpack_require__(19)
@@ -4752,9 +4759,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _ = __webpack_require__(3)
 
@@ -4813,7 +4820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	}
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
