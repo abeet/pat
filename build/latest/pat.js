@@ -4433,9 +4433,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	//text如果里面有{{}}需要作为单独的节点
 	function analyzeText(structure,tempText){
 
-	  var trimmed = tempText.replace(/^[\n\s\t]+/g,'').replace(/[\n\s\t]+$/g,'')
-
-	  if (!trimmed) return
+	  tempText = tempText.replace(/^[\x00-\x20]+/g,'').replace(/[\x00-\x20]+$/g,'')
+	  // 全角空格等字符是要保留的
+	  if (!tempText) return
 
 	  //找出里面有没有特殊的占位节点
 	  var tokens = spText(tempText)
